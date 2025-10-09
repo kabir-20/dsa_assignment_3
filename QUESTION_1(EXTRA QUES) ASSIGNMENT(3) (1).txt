@@ -1,0 +1,29 @@
+#include <iostream> // raverse array from left to right Pop from stack until you find a smaller element that smaller element is the answer   f stack becomes empty → answer is -1  Push current element into stack
+using namespace std;
+
+#define MAX 100
+
+int main() {
+    int n, A[MAX], stack[MAX], ans[MAX];
+    int top = -1;
+
+    cout << "Enter size of array: ";
+    cin >> n;
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++) cin >> A[i];
+
+    for (int i = 0; i < n; i++) {
+        while (top != -1 && stack[top] >= A[i]) {
+            top--;  // pop
+        }
+        if (top == -1) ans[i] = -1;
+        else ans[i] = stack[top];
+        stack[++top] = A[i];  // push current
+    }
+
+    cout << "Nearest smaller to left: ";
+    for (int i = 0; i < n; i++) cout << ans[i] << " ";
+    cout << endl;
+
+    return 0;
+}

@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+#define MAX 100   // maximum size of stack
+
+char stack[MAX];
+int top = -1;
+
+// push character into stack
+void push(char ch) {
+    if (top == MAX - 1) {
+        cout << "Stack Overflow\n";
+    } else {
+        top++;
+        stack[top] = ch;
+    }
+}
+
+// pop character from stack
+char pop() {
+    if (top == -1) {
+        cout << "Stack Underflow\n";
+        return '\0';
+    } else {
+        char ch = stack[top];
+        top--;
+        return ch;
+    }
+}
+
+int main() {
+    char str[100];
+    cout << "Enter a string: ";
+    cin >> str;   // reads string without spaces
+
+    // push all characters into stack
+    for (int i = 0; str[i] != '\0'; i++) {
+        push(str[i]);
+    }
+
+    // pop characters to get reversed string
+    cout << "Reversed string: ";
+    while (top != -1) {
+        cout << pop();
+    }
+    cout << endl;
+
+    return 0;
+}

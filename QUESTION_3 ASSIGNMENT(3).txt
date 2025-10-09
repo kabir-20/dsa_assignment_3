@@ -1,0 +1,42 @@
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    char exp[100], stack[100];
+    int top = -1;
+
+    cout << "Enter an expression: ";
+    cin >> exp;
+
+    for (int i = 0; exp[i] != '\0'; i++) {
+        char ch = exp[i];
+
+        // If opening bracket → push
+        if (ch == '(' || ch == '{' || ch == '[') {
+            stack[++top] = ch;
+        }
+        // If closing bracket → check matching
+        else if (ch == ')' || ch == '}' || ch == ']') {
+            if (top == -1) {   // no opening bracket
+                cout << "Not Balanced\n";
+                return 0;
+            }
+            char last = stack[top--];
+            if ((ch == ')' && last != '(') ||
+                (ch == '}' && last != '{') ||
+                (ch == ']' && last != '[')) {
+                cout << "Not Balanced\n";
+                return 0;
+            }
+        }
+    }
+
+    // If stack empty → balanced
+    if (top == -1)
+        cout << "Balanced\n";
+    else
+        cout << "Not Balanced\n";
+
+    return 0;
+}

@@ -1,0 +1,38 @@
+#include <iostream>
+#include <stack>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+bool canBeSorted(vector<int> A) {
+    int N = A.size();
+    vector<int> sortedA = A;
+    sort(sortedA.begin(), sortedA.end()); // target order
+
+    stack<int> S;
+    int j = 0; // pointer for sortedA
+
+    for (int i = 0; i < N; i++) {
+        S.push(A[i]);
+
+        // Pop from stack if top matches expected element
+        while (!S.empty() && S.top() == sortedA[j]) {
+            S.pop();
+            j++;
+        }
+    }
+
+    // After processing all, if everything matched, success
+    return (j == N);
+}
+
+int main() {
+    vector<int> A = {3, 1, 2};  // Example input
+
+    if (canBeSorted(A))
+        cout << "Yes, it is possible to sort A into B using the stack.\n";
+    else
+        cout << "No, it is not possible.\n";
+
+    return 0;
+}

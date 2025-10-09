@@ -1,0 +1,30 @@
+#include <iostream> // Traverse array from right to left  Pop from stack until you find something greater If stack is empty → answer = -1  Else answer = stack[top] Push current element on stack
+using namespace std;
+
+#define MAX 100
+
+int main() {
+    int n, arr[MAX], stack[MAX], ans[MAX];
+    int top = -1;
+
+    cout << "Enter size of array: ";
+    cin >> n;
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++) cin >> arr[i];
+
+    // Traverse from right to left
+    for (int i = n - 1; i >= 0; i--) {
+        while (top != -1 && stack[top] <= arr[i]) {
+            top--;  // pop smaller or equal
+        }
+        if (top == -1) ans[i] = -1;
+        else ans[i] = stack[top];
+        stack[++top] = arr[i];  // push current
+    }
+
+    cout << "Next Greater Elements: ";
+    for (int i = 0; i < n; i++) cout << ans[i] << " ";
+    cout << endl;
+
+    return 0;
+}
