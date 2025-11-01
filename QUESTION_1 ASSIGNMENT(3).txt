@@ -1,12 +1,12 @@
 #include <iostream>
 using namespace std;
 
-#define MAX 5   // maximum size of stack
+#define MAX 5  
 
 int stack[MAX];
-int top = -1;   // initially stack is empty
+int top = -1;  
 
-// Function to check if stack is empty
+
 int isEmpty() {
     if (top == -1)
         return 1;
@@ -14,7 +14,7 @@ int isEmpty() {
         return 0;
 }
 
-// Function to check if stack is full
+
 int isFull() {
     if (top == MAX - 1)
         return 1;
@@ -22,7 +22,7 @@ int isFull() {
         return 0;
 }
 
-// Function to add element to stack
+
 void push(int value) {
     if (isFull()) {
         cout << "Stack Overflow (Full)\n";
@@ -33,7 +33,7 @@ void push(int value) {
     }
 }
 
-// Function to remove element from stack
+
 void pop() {
     if (isEmpty()) {
         cout << "Stack Underflow (Empty)\n";
@@ -43,7 +43,7 @@ void pop() {
     }
 }
 
-// Function to see top element
+
 void peek() {
     if (isEmpty()) {
         cout << "Stack is Empty\n";
@@ -52,7 +52,7 @@ void peek() {
     }
 }
 
-// Function to display all elements
+
 void display() {
     if (isEmpty()) {
         cout << "Stack is Empty\n";
@@ -65,7 +65,7 @@ void display() {
     }
 }
 
-// Main menu-driven program
+
 int main() {
     int choice, value;
     while (1) {
