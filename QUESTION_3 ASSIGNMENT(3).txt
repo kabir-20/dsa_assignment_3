@@ -12,13 +12,13 @@ int main() {
     for (int i = 0; exp[i] != '\0'; i++) {
         char ch = exp[i];
 
-        // If opening bracket → push
+   
         if (ch == '(' || ch == '{' || ch == '[') {
             stack[++top] = ch;
         }
-        // If closing bracket → check matching
+       
         else if (ch == ')' || ch == '}' || ch == ']') {
-            if (top == -1) {   // no opening bracket
+            if (top == -1) {  
                 cout << "Not Balanced\n";
                 return 0;
             }
