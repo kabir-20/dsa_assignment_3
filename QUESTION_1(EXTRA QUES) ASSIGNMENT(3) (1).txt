@@ -1,4 +1,4 @@
-#include <iostream> // raverse array from left to right Pop from stack until you find a smaller element that smaller element is the answer   f stack becomes empty → answer is -1  Push current element into stack
+#include <iostream> 
 using namespace std;
 
 #define MAX 100
