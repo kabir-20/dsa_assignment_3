@@ -14,7 +14,7 @@ public:
         } else if (x >= minEle) {
             st.push(x);
         } else {
-            // Encode and update min
+           
             st.push(2*x - minEle);
             minEle = x;
         }
@@ -27,7 +27,7 @@ public:
         st.pop();
 
         if (t < minEle) {
-            // Restore previous min
+            
             minEle = 2*minEle - t;
         }
     }
@@ -37,7 +37,7 @@ public:
 
         long long t = st.top();
         if (t < minEle)
-            return minEle; // encoded value means real top = minEle
+            return minEle; 
         return t;
     }
 
