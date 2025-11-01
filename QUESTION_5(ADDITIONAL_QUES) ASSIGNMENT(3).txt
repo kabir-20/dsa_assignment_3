@@ -1,38 +1,39 @@
 #include <iostream>
 #include <stack>
-#include <vector>
-#include <algorithm>
 using namespace std;
 
-bool canBeSorted(vector<int> A) {
-    int N = A.size();
-    vector<int> sortedA = A;
-    sort(sortedA.begin(), sortedA.end()); // target order
+int main() {
+    int n;
+    cin >> n;
+    int A[100], B[100];
 
-    stack<int> S;
-    int j = 0; // pointer for sortedA
+    for (int i = 0; i < n; i++)
+        cin >> A[i];
 
-    for (int i = 0; i < N; i++) {
-        S.push(A[i]);
+    for (int i = 0; i < n; i++)
+        B[i] = A[i];
 
-        // Pop from stack if top matches expected element
-        while (!S.empty() && S.top() == sortedA[j]) {
-            S.pop();
+    for (int i = 0; i < n - 1; i++)
+        for (int j = i + 1; j < n; j++)
+            if (B[i] > B[j]) {
+                int t = B[i];
+                B[i] = B[j];
+                B[j] = t;
+            }
+
+    stack<int> s;
+    int j = 0;
+    for (int i = 0; i < n; i++) {
+        s.push(A[i]);
+        while (!s.empty() && s.top() == B[j]) {
+            s.pop();
             j++;
         }
     }
 
-    // After processing all, if everything matched, success
-    return (j == N);
-}
-
-int main() {
-    vector<int> A = {3, 1, 2};  // Example input
-
-    if (canBeSorted(A))
-        cout << "Yes, it is possible to sort A into B using the stack.\n";
+    if (j == n)
+        cout << "Yes";
     else
-        cout << "No, it is not possible.\n";
-
-    return 0;
+        cout << "No";
 }
+
